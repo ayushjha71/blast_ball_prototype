@@ -1,32 +1,36 @@
+using blastBall.manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverPanel : MonoBehaviour
+namespace blastBall.UI
 {
-    [SerializeField] 
-    private Button nextLevelButton;
-    [SerializeField] 
-    private Button restartButton;
-    [SerializeField] 
-    private TMP_Text completionText;
-
-    private void Start()
+    public class GameOverPanel : MonoBehaviour
     {
-        if (nextLevelButton != null)
-            nextLevelButton.onClick.AddListener(OnNextLevelClick);
+        [SerializeField]
+        private Button nextLevelButton;
+        [SerializeField]
+        private Button restartButton;
+        [SerializeField]
+        private TMP_Text completionText;
 
-        if (restartButton != null)
-            restartButton.onClick.AddListener(OnRestartClick);
-    }
+        private void Start()
+        {
+            if (nextLevelButton != null)
+                nextLevelButton.onClick.AddListener(OnNextLevelClick);
 
-    private void OnNextLevelClick()
-    {
-        GameManager.Instance.NextLevel();
-    }
+            if (restartButton != null)
+                restartButton.onClick.AddListener(OnRestartClick);
+        }
 
-    private void OnRestartClick()
-    {
-        GameManager.Instance.RestartLevel();
+        private void OnNextLevelClick()
+        {
+            GameManager.Instance.NextLevel();
+        }
+
+        private void OnRestartClick()
+        {
+            GameManager.Instance.RestartLevel();
+        }
     }
 }

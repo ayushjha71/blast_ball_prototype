@@ -1,43 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ColorCounter : MonoBehaviour
+
+namespace blastBall.handler
 {
-    [SerializeField] 
-    private TextMeshPro countText;
-
-    private Color mCurrentColor;
-
-    private void Awake()
+    public class ColorCounter : MonoBehaviour
     {
-        if (countText == null)
+        [SerializeField]
+        private TextMeshPro countText;
+
+        private Color mCurrentColor;
+
+        private void Awake()
         {
-            countText = GetComponentInChildren<TextMeshPro>();
             if (countText == null)
             {
-                countText = gameObject.AddComponent<TextMeshPro>();
+                countText = GetComponentInChildren<TextMeshPro>();
+                if (countText == null)
+                {
+                    countText = gameObject.AddComponent<TextMeshPro>();
+                }
             }
         }
-    }
 
-    public void SetColor(Color color, int count)
-    {
-        mCurrentColor = color;
-        UpdateCount(count);
-    }
-
-    public void UpdateCount(int count)
-    {
-        if (countText != null)
+        public void SetColor(Color color, int count)
         {
-            countText.text = count.ToString();
+            mCurrentColor = color;
+            UpdateCount(count);
         }
-    }
 
-    public Color GetCurrentColor()
-    {
-        return mCurrentColor;
+        public void UpdateCount(int count)
+        {
+            if (countText != null)
+            {
+                countText.text = count.ToString();
+            }
+        }
+
+        public Color GetCurrentColor()
+        {
+            return mCurrentColor;
+        }
     }
 }
